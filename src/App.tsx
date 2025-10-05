@@ -3,14 +3,12 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import PageTransition from './components/PageTransition';
 import { useScrollToTop } from './hooks/useScrollToTop';
 import MainLayout from './MainLayout';
-import DashboardLayout from './DashboardLayout';
 import Home from './pages/Home';
 import Contact from './pages/Contact';
 import Devis from './pages/Devis';
 import CallRequest from './pages/CallRequest';
 import Blog from './pages/Blog';
 import BlogArticle from './pages/BlogArticle';
-import Dashboard from './pages/Dashboard';
 import About from './pages/About';
 import Legal from './pages/Legal';
 import Privacy from './pages/Privacy';
@@ -22,15 +20,6 @@ const AppContent: React.FC<{ currentLang: 'fr' | 'en'; onLanguageChange: (lang: 
 
   return (
     <Routes>
-      {/* Dashboard Route with its own layout */}
-      <Route path="/dashboard" element={
-        <DashboardLayout>
-          <PageTransition>
-            <Dashboard />
-          </PageTransition>
-        </DashboardLayout>
-      } />
-
       {/* Main site routes with the main layout */}
       <Route path="/*" element={
         <MainLayout

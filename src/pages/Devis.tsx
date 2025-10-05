@@ -49,7 +49,7 @@ const Devis: React.FC<DevisProps> = ({ translations }) => {
       data.append(key, formData[key as keyof typeof formData]);
     }
 
-    fetch(scriptURL, { method: 'POST', body: data})
+    fetch(scriptURL, { method: 'POST', body: data, mode: 'no-cors'})
       .then(response => {
         console.log('Success!', response);
         setIsSubmitted(true);
@@ -88,7 +88,10 @@ const Devis: React.FC<DevisProps> = ({ translations }) => {
           <p className="text-gray-600 mb-6">
             Merci pour votre demande. Notre équipe vous contactera sous 24h pour discuter de votre projet.
           </p>
-          <div className="mt-8">
+          <div className="mt-8 flex flex-col items-center space-y-4">
+            <Link to="/blog" className="inline-flex items-center justify-center space-x-2 bg-[#30628D] text-white px-6 py-3 rounded-lg hover:bg-[#30628D]/90 transition-colors font-semibold">
+              <span>Découvrir nos articles de blog</span>
+            </Link>
             <Link to="/" className="inline-flex items-center justify-center space-x-2 border-2 border-gray-300 text-gray-700 px-6 py-3 rounded-lg hover:bg-gray-100 transition-colors font-semibold">
               <ArrowLeft size={18} />
               <span>Retour à l'accueil</span>

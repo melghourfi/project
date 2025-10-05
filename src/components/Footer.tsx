@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Mail, Phone, MapPin, Instagram, Facebook, Youtube, Send } from 'lucide-react';
+import { Mail, Phone, MapPin, Instagram, Facebook, Send } from 'lucide-react';
+import Logo from '../assets/Logo.png';
 
 interface FooterProps {
-  currentLang: 'fr' | 'en';
   translations: any;
 }
 
-const Footer: React.FC<FooterProps> = ({ currentLang, translations }) => {
+const Footer: React.FC<FooterProps> = ({ translations }) => {
   const [email, setEmail] = useState('');
 
   const handleNewsletterSubmit = (e: React.FormEvent) => {
@@ -26,14 +26,13 @@ const Footer: React.FC<FooterProps> = ({ currentLang, translations }) => {
         <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-12">
           {/* Company Info */}
           <div className="space-y-6">
-            <Link to="/" className="flex items-center space-x-2">
-              <img 
-                src="/Logo copy copy.png" 
-                alt="KROObydvrenov" 
-                className="h-10 w-auto brightness-0 invert"
-              />
-            </Link>
-            
+                      <Link to="/" className="flex items-center space-x-2">
+                        <img 
+                          src={Logo} 
+                          alt="KROObydvrenov" 
+                          className="h-10 w-auto brightness-0 invert"
+                        />
+                      </Link>            
             <p className="text-gray-300 leading-relaxed">
               {translations.footer.description}
             </p>
@@ -73,9 +72,14 @@ const Footer: React.FC<FooterProps> = ({ currentLang, translations }) => {
           <div>
             <h3 className="text-xl font-bold mb-6">{translations.footer.services.title}</h3>
             <ul className="space-y-3">
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Fenêtres en bois</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors">{translations.footer.services.renovation}</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Entretien</a></li>
+              {/* Build services list from translations.windowTypes to match header */}
+              {Object.entries(translations.windowTypes).filter(([key]) => !key.endsWith('Desc')).map(([key, value]) => (
+                <li key={key}>
+                  <a href={`/window-types/${key}`} className="text-gray-300 hover:text-white transition-colors">
+                    {value as string}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -109,10 +113,10 @@ const Footer: React.FC<FooterProps> = ({ currentLang, translations }) => {
             <div className="mt-8">
               <h4 className="font-semibold mb-4">{translations.footer.followUs}</h4>
               <div className="flex space-x-4">
-                <a href="#" className="bg-gray-800 p-3 rounded-lg hover:bg-[#30628D] transition-colors">
+                <a href="https://www.instagram.com/kroobydvrenov/" target="_blank" rel="noopener noreferrer" className="bg-gray-800 p-3 rounded-lg hover:bg-[#30628D] transition-colors">
                   <Instagram size={20} />
                 </a>
-                <a href="#" className="bg-gray-800 p-3 rounded-lg hover:bg-[#30628D] transition-colors">
+                <a href="https://www.facebook.com/profile.php?id=61571135793591" target="_blank" rel="noopener noreferrer" className="bg-gray-800 p-3 rounded-lg hover:bg-[#30628D] transition-colors">
                   <Facebook size={20} />
                 </a>
                 <a href="mailto:contact@kroobydvrenov.com" className="bg-gray-800 p-3 rounded-lg hover:bg-[#30628D] transition-colors">

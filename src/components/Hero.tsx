@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Shield, Award, Clock } from 'lucide-react';
+import heroImage from '../assets/hero-image.png';
 
 interface HeroProps {
   translations: any;
@@ -45,7 +46,7 @@ const Hero: React.FC<HeroProps> = ({ translations }) => {
           <div>
             <div className="overflow-hidden rounded-2xl shadow-2xl transform hover:scale-105 transition-transform duration-500">
               <img
-                src="https://images.pexels.com/photos/5691659/pexels-photo-5691659.jpeg?auto=compress&cs=tinysrgb&w=800"
+                src={heroImage}
                 alt="Artisan rénovant une fenêtre en bois"
                 className="w-full h-[500px] object-cover"
               />

@@ -121,6 +121,12 @@ const BlogArticle: React.FC<BlogArticleProps> = ({ translations }) => {
               </Link>
             </div>
           </div>
+          {/* Additional Blog CTA: discover other articles */}
+          <div className="mt-12 text-center">
+            <Link to="/blog" className="inline-block bg-[#30628D] text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg">
+              Découvrire nos autres articles de blog
+            </Link>
+          </div>
         </article>
       </div>
     </div>

@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+// Ensure variable names remain the same but point to the correct files:
+import photoAvant1 from '../assets/photo-avant-1.png';
+import photoApres1 from '../assets/photo-apres-1.png';
 
 interface BeforeAfterProps {
   translations: any;
@@ -13,8 +16,9 @@ const BeforeAfter: React.FC<BeforeAfterProps> = ({ translations }) => {
     id: 1,
     title: translations.beforeAfter.projects.project1.title,
     description: translations.beforeAfter.projects.project1.description,
-    before: "https://images.pexels.com/photos/5691728/pexels-photo-5691728.jpeg?auto=compress&cs=tinysrgb&w=800",
-    after: "https://images.pexels.com/photos/5691730/pexels-photo-5691730.jpeg?auto=compress&cs=tinysrgb&w=800",
+  // Display swap requested: show apres image as "before" and avant image as "after".
+  before: photoApres1,
+  after: photoAvant1,
     location: "Dordogne (24)",
     year: "2024"
   };

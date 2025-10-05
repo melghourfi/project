@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown, Phone, FileText, Sun, Moon, Check } from 'lucide-react';
+import Logo from '../assets/Logo.png';
+
+const icons = import.meta.glob('../assets/icons/*.png', { eager: true, query: '?url', import: 'default' });
 
 interface HeaderProps {
   currentLang: 'fr' | 'en';
@@ -209,7 +212,7 @@ const Header: React.FC<HeaderProps> = ({ currentLang, onLanguageChange, translat
           {/* Logo */}
           <Link to="/" onClick={handleHomeClick} className="flex items-center space-x-2">
             <img 
-              src="/Logo copy copy.png" 
+              src={Logo} 
               alt="KROObydvrenov" 
               className="h-12 w-auto dark:brightness-0 dark:invert"
             />
@@ -239,10 +242,11 @@ const Header: React.FC<HeaderProps> = ({ currentLang, onLanguageChange, translat
                     <Link 
                       key={type.id} 
                       to={`/window-types/${type.id}`}
-                      className="block px-4 py-2 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+                      className="group flex items-center px-4 py-2 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
                       onClick={() => setIsWindowTypesOpen(false)}
                     >
-                      <span className="font-medium text-gray-700 dark:text-gray-300 text-sm">{type.name}</span>
+                      <img src={icons[`../assets/icons/${type.id}.png`]} alt="" className="w-8 h-8 mr-3 dark:invert transition-all duration-300 transform group-hover:scale-110" />
+                      <span className="font-medium text-gray-700 dark:text-gray-300 text-sm transition-transform duration-300 transform">{type.name}</span>
                     </Link>
                   ))}
                 </div>

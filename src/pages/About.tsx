@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Award, Users, Clock, Shield, Heart, Target, ArrowRight } from 'lucide-react';
+import history from '../assets/history.png';
+import history2 from '../assets/history-2.jpg';
 
 interface AboutProps {
   translations: any;
@@ -13,11 +15,13 @@ const About: React.FC<AboutProps> = ({ translations }) => {
         {/* Hero Section */}
         <div className="text-center mb-16">
           <h1 className="text-5xl font-bold text-gray-900 mb-6">À propos de KROObydvrenov</h1>
-          <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-            Depuis plus de 15 ans, nous sommes spécialisés dans la rénovation de fenêtres en bois en Île-de-France. 
-            Notre passion pour l'artisanat traditionnel et notre expertise technique nous permettent de redonner vie 
-            à vos menuiseries tout en améliorant leurs performances énergétiques.
-          </p>
+              <div className="mx-auto max-w-4xl bg-[#F8FBFF] p-8 rounded-lg">
+                <p className="text-xl text-gray-600 leading-relaxed">
+                  Depuis plus de 15 ans, nous sommes spécialisés dans la rénovation de fenêtres en bois en Île-de-France.
+                  Notre passion pour l'artisanat traditionnel et notre expertise technique nous permettent de redonner vie
+                  à vos menuiseries tout en améliorant leurs performances énergétiques.
+                </p>
+              </div>
         </div>
 
         {/* Story Section */}
@@ -44,7 +48,7 @@ const About: React.FC<AboutProps> = ({ translations }) => {
           
           <div 
             className="bg-cover bg-center rounded-2xl shadow-lg"
-            style={{ backgroundImage: 'url(https://images.pexels.com/photos/5691685/pexels-photo-5691685.jpeg?auto=compress&cs=tinysrgb&w=800)' }}
+            style={{ backgroundImage: `url(${history})` }}
           >
           </div>
         </div>
@@ -59,8 +63,8 @@ const About: React.FC<AboutProps> = ({ translations }) => {
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-4">Passion du métier</h3>
               <p className="text-gray-600 leading-relaxed">
-                Chaque projet est abordé avec la passion de l'artisan. Nous prenons le temps nécessaire 
-                pour comprendre vos besoins et respecter l'âme de vos menuiseries.
+                Chaque projet est abordé avec la passion de l’artisan. Nous prenons le temps nécessaire 
+                pour comprendre vos besoins et respecter l’âme de votre menuiserie.
               </p>
             </div>
 
@@ -71,7 +75,7 @@ const About: React.FC<AboutProps> = ({ translations }) => {
               <h3 className="text-xl font-bold text-gray-900 mb-4">Excellence technique</h3>
               <p className="text-gray-600 leading-relaxed">
                 Notre expertise technique nous permet d'allier méthodes traditionnelles et innovations 
-                modernes pour des résultats durables et performants.
+                modernes pour obtenir des résultats durables et efficaces.
               </p>
             </div>
 
@@ -81,7 +85,8 @@ const About: React.FC<AboutProps> = ({ translations }) => {
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-4">Engagement qualité</h3>
               <p className="text-gray-600 leading-relaxed">
-                Nous assurons la qualité de nos interventions grâce à une technique éprouvée depuis plus de 20 ans et un suivi personnalisé.                     Notre rénovation à l’identique conserve vos menuiseries sans démarches administratives.
+                Depuis plus de 20 ans, notre savoir-faire éprouvé et notre suivi personnalisé garantissent
+                 une rénovation à l’identique, alliant préservation du bois et absence de démarches administratives.
               </p>
             </div>
           </div>
@@ -93,42 +98,32 @@ const About: React.FC<AboutProps> = ({ translations }) => {
           <div className="max-w-4xl mx-auto">
             <div className="bg-gray-50 rounded-2xl p-8">
               <div className="grid md:grid-cols-3 gap-8 items-center">
-                <div className="text-center">
+                <div className="">
                   <img
-                    src="https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop"
+                    src={history2}
                     alt="Olivier Rey"
-                    className="w-32 h-32 rounded-full mx-auto mb-4 object-cover"
+                    className="w-full h-auto rounded-md object-cover"
                   />
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Olivier Rey</h3>
-                  <p className="text-[#30628D] font-semibold mb-2">Fondateur & Artisan</p>
-                  <p className="text-sm text-gray-600">06 20 60 96 43</p>
                 </div>
                 
                 <div className="md:col-span-2">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Olivier Rey</h3>
+                  <p className="text-[#30628D] font-semibold mb-2">Fondateur & Artisan</p>
+                  <p className="text-sm text-gray-600 mb-4">06 20 60 96 43</p>
                   <h4 className="text-lg font-semibold text-gray-900 mb-4">Parcours professionnel</h4>
                   <div className="space-y-3 text-gray-600">
                     <div className="flex items-start space-x-3">
                       <div className="w-2 h-2 bg-[#30628D] rounded-full mt-2"></div>
                       <div>
-                        <strong> 2009 :</strong> Création de KROObydvrenov
+                        <strong>2013 – Débuts avec DVRénov</strong>
+                        <p>En 2013, je découvre ma passion pour le bois, une matière noble qui me séduit immédiatement. Restaurer et préserver devient une évidence, avec la volonté de contribuer à la sauvegarde du patrimoine architectural.</p>
                       </div>
                     </div>
                     <div className="flex items-start space-x-3">
                       <div className="w-2 h-2 bg-[#30628D] rounded-full mt-2"></div>
                       <div>
-                        <strong>2015 :</strong> Certification RGE Qualibois
-                      </div>
-                    </div>
-                    <div className="flex items-start space-x-3">
-                      <div className="w-2 h-2 bg-[#30628D] rounded-full mt-2"></div>
-                      <div>
-                        <strong>2020 :</strong> Spécialisation rénovation énergétique
-                      </div>
-                    </div>
-                    <div className="flex items-start space-x-3">
-                      <div className="w-2 h-2 bg-[#30628D] rounded-full mt-2"></div>
-                      <div>
-                        <strong>2025 :</strong> Plus de 500 projets réalisés
+                        <strong>2024 – Création de KROO by DVRénov</strong>
+                        <p>En 2024 naît KROO by DVRénov, avec l’ambition de faire connaître la rénovation à l’identique des fenêtres en bois et de développer cette expertise dans le Sud-Ouest, en s’appuyant sur une technique perfectionnée.</p>
                       </div>
                     </div>
                   </div>

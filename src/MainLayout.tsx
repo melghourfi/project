@@ -29,7 +29,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children, currentLang, onLangua
       {isFormPage ? (
         <SimpleFooter translations={translations} />
       ) : (
-        <Footer currentLang={currentLang} translations={translations} />
+        <Footer translations={translations} />
       )}
       <CookieBanner translations={translations} />
       <ScrollToTop />

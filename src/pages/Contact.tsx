@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Phone, Mail, MapPin, Clock, Send } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, Send, CheckCircle, ArrowLeft } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 interface ContactProps {
   translations: any;
@@ -14,23 +15,24 @@ const Contact: React.FC<ContactProps> = ({ translations }) => {
     message: ''
   });
   const [submitting, setSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
 
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbwXYG2TS_VSIekeCVaoN8KmSeKT-ApxXRVk-7R8FfZHMvEXK52ov8cfWeXNhmDq6CY/exec';
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxD8VerpkzuHb8i9xpZ1RRSNCnkJePJ2OXeelxKxDrAIN-vg59Ssm_pWgq0oQvCeykT/exec';
     const data = new FormData();
     data.append('sheetName', 'Contact');
     for (const key in formData) {
       data.append(key, formData[key as keyof typeof formData]);
     }
 
-    fetch(scriptURL, { method: 'POST', body: data})
+    fetch(scriptURL, { method: 'POST', body: data, mode: 'no-cors'})
       .then(response => {
         console.log('Success!', response);
         setSubmitting(false);
-        alert('Message envoyé avec succès !');
+        setIsSubmitted(true);
         setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
       })
       .catch(error => {
@@ -46,6 +48,31 @@ const Contact: React.FC<ContactProps> = ({ translations }) => {
       [e.target.name]: e.target.value
     });
   };
+
+  if (isSubmitted) {
+    return (
+      <div className="bg-gray-50 min-h-screen flex items-center justify-center">
+        <div className="text-center max-w-lg mx-auto p-4">
+          <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+            <CheckCircle className="text-green-600" size={40} />
+          </div>
+          <h1 className="text-3xl font-bold text-gray-900 mb-4">Message envoyé !</h1>
+          <p className="text-gray-600 mb-6">
+            Merci pour votre demande. Notre équipe vous contactera sous 24h.
+          </p>
+          <div className="mt-8 flex flex-col items-center space-y-4">
+            <Link to="/blog" className="inline-flex items-center justify-center space-x-2 bg-[#30628D] text-white px-6 py-3 rounded-lg hover:bg-[#30628D]/90 transition-colors font-semibold">
+              <span>Découvrir nos articles de blog</span>
+            </Link>
+            <Link to="/" className="inline-flex items-center justify-center space-x-2 border-2 border-gray-300 text-gray-700 px-6 py-3 rounded-lg hover:bg-gray-100 transition-colors font-semibold">
+              <ArrowLeft size={18} />
+              <span>Retour à l'accueil</span>
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="bg-gray-50 min-h-screen flex flex-col justify-center py-8 pt-32">

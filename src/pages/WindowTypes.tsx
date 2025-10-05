@@ -415,7 +415,7 @@ Notre certification **RGE** vous garantit l'accès à ces financements.`,
     return (
       <div className="pt-40 pb-20 bg-gray-50 min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">Type de fenêtre non trouvé</h1>
+          <h1 className="text-2xl font-bold text-gray-900 mb-4">Mise à jour est en cours...</h1>
           <Link to="/" className="inline-flex items-center space-x-2 text-[#30628D] hover:text-[#30628D]/80 transition-colors">
             <ArrowLeft size={20} />
             <span>Retour à l'accueil</span>

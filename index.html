@@ -1,8 +1,61 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta charset="UTF-8" />
+    <!-- Favicon and touch icons -->
+    <!-- Default favicon (light) -->
+    <link id="favicon-link" rel="icon" type="image/png" href="/src/assets/favicone.png" />
+    <link rel="apple-touch-icon" href="/src/assets/favicone.png" />
+    <meta name="theme-color" content="#30628D" />
+
+    <!--
+      Script: swap favicon automatically based on user preference (dark/light).
+      To provide a dark-mode specific icon, add a file named `favicone-dark.png` in `src/assets`.
+      If `favicone-dark.png` is missing, the default `favicone.png` will be used.
+    -->
+    <script>
+      (function () {
+        try {
+          const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          const favicon = document.getElementById('favicon-link');
+          if (!favicon) return;
+
+          // Use the built assets path in production (served from /assets)
+          const darkHref = '/assets/favicone-dark.png';
+
+          // Probe whether dark variant exists by attempting to load it
+          function checkImage(url) {
+            return new Promise((resolve) => {
+              const img = new Image();
+              img.onload = () => resolve(true);
+              img.onerror = () => resolve(false);
+              img.src = url;
+            });
+          }
+
+          checkImage(darkHref).then((exists) => {
+            if (prefersDark && exists) {
+              favicon.href = darkHref;
+            } else {
+              // Fallback to the built asset path (Vite will fingerprint the file in production)
+              favicon.href = '/assets/favicone.png';
+            }
+          });
+
+          // Listen to changes in the color scheme preference
+          if (window.matchMedia) {
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+              checkImage(darkHref).then((exists) => {
+                favicon.href = e.matches && exists ? darkHref : '/assets/favicone.png';
+              });
+            });
+          }
+        } catch (err) {
+          // Fail silently; favicon will use the default set above
+          console.warn('Favicon swap failed', err);
+        }
+      })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>KROObydvrenov Window Renovation Website</title>
   </head>
